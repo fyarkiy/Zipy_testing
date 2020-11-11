@@ -1,4 +1,4 @@
-package bargain_zone.service.impl;
+package bargain_zone.service.mapper;
 
 import bargain_zone.model.dto.CommodityRequestDto;
 import bargain_zone.service.SettingDtoFieldsService;

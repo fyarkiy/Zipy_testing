@@ -1,14 +1,15 @@
 package bargain_zone;
 
-import bargain_zone.service.BargainProcessService;
+import bargain_zone.service.BargainProductDataProcessService;
 import bargain_zone.service.WriteFileService;
+import bargain_zone.util.Util;
 
 public class Main {
     public static void main(String args[]) throws Exception {
 
-        BargainProcessService reader = new BargainProcessService();
+        BargainProductDataProcessService reader = new BargainProductDataProcessService();
         reader.getAllProducts();
         WriteFileService writer = new WriteFileService();
-        writer.writeCsv("bargain_list.csv");
+        writer.writeCsv(Util.OUTPUT_FILE);
     }
 }

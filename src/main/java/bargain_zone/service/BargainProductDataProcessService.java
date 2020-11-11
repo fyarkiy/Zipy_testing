@@ -8,15 +8,13 @@ import bargain_zone.service.mapper.Mapper;
 import bargain_zone.util.Util;
 import java.io.IOException;
 import java.util.Map;
-import org.apache.log4j.Logger;
 import org.jsoup.nodes.Element;
 import org.jsoup.select.Elements;
 
-public class BargainProcessService {
-    private static final Logger logger = Logger.getLogger(BargainProcessService.class);
+public class BargainProductDataProcessService {
     private CommodityService commodityService = new CommodityServiceImpl();
     private Mapper mapper = new Mapper();
-    private ReadFileService readFileService = new ReadFileService();
+    private JsoupReaderService readerService = new JsoupReaderService();
     private Parser parser = new Parser();
 
     public void getAllProducts() throws IOException {
@@ -27,7 +25,7 @@ public class BargainProcessService {
             int pageNumber = 1;
             String header = Util.productClassesMap.get(category);
             while (Storage.products.size() < (100 * i)) {
-                Elements productName = readFileService.readJsoupFromWebPage(sitePage + "&p=" + pageNumber, header);
+                Elements productName = readerService.readJsoupFromWebPage(sitePage + "&p=" + pageNumber, header);
                 getProductDetails(productName, category, i);
                 pageNumber++;
             }

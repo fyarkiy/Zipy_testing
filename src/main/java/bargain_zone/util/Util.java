@@ -1,10 +1,10 @@
 package bargain_zone.util;
 
 import bargain_zone.service.SettingDtoFieldsService;
-import bargain_zone.service.impl.SettinOldPriceServiceImpl;
-import bargain_zone.service.impl.SettingDeliveryServiceImpl;
-import bargain_zone.service.impl.SettingDescriptionServiceImpl;
-import bargain_zone.service.impl.SettingNewPriceServiceImpl;
+import bargain_zone.service.mapper.SettinOldPriceServiceImpl;
+import bargain_zone.service.mapper.SettingDeliveryServiceImpl;
+import bargain_zone.service.mapper.SettingDescriptionServiceImpl;
+import bargain_zone.service.mapper.SettingNewPriceServiceImpl;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.HashMap;
@@ -12,8 +12,10 @@ import java.util.List;
 import java.util.Map;
 
 public class Util {
-    public static final String GENERAL = "https://allegro.pl/kategoria/%s?string=bargain_zone&bmatch=dict55-ctx-fas-1-4-1106";
+    public static final String GENERAL =
+            "https://allegro.pl/kategoria/%s?string=bargain_zone&bmatch=dict55-ctx-fas-1-4-1106";
     public static final List<String> CATEGORIES = new ArrayList<>(Arrays.asList("moda","uroda", "elektronika"));
+    public static final String OUTPUT_FILE = "bargain_list.csv";
 
     public static Map<String, String> productClassesMap;
     static{
@@ -36,7 +38,8 @@ public class Util {
     static {
         urodaFieldsMap = new HashMap<>();
         urodaFieldsMap.put("m7er_k4 _9c44d_3TzmE", new SettingDescriptionServiceImpl());
-        urodaFieldsMap.put("mp0t_ji mpof_vs _9c44d_1VS-Y _9c44d_3_DDQ mpof_vs _9c44d_2MDwk", new SettinOldPriceServiceImpl());
+        urodaFieldsMap.put("mp0t_ji mpof_vs _9c44d_1VS-Y _9c44d_3_DDQ mpof_vs _9c44d_2MDwk",
+                new SettinOldPriceServiceImpl());
         urodaFieldsMap.put("_9c44d_3AMmE", new SettingNewPriceServiceImpl());
         urodaFieldsMap.put("_9c44d_3K52C", new SettingDeliveryServiceImpl());
     }
@@ -45,7 +48,8 @@ public class Util {
     static {
         elektronikaFieldsMap = new HashMap<>();
         elektronikaFieldsMap.put("m7er_k4 _9c44d_3TzmE", new SettingDescriptionServiceImpl());
-        elektronikaFieldsMap.put("mp0t_ji mpof_vs _9c44d_1VS-Y _9c44d_3_DDQ mpof_vs _9c44d_2MDwk", new SettinOldPriceServiceImpl());
+        elektronikaFieldsMap.put("mp0t_ji mpof_vs _9c44d_1VS-Y _9c44d_3_DDQ mpof_vs _9c44d_2MDwk",
+                new SettinOldPriceServiceImpl());
         elektronikaFieldsMap.put("_9c44d_3AMmE", new SettingNewPriceServiceImpl());
         elektronikaFieldsMap.put("_9c44d_3K52C", new SettingDeliveryServiceImpl());
     }

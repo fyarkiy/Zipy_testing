@@ -1,12 +1,12 @@
-package bargain_zone.service.impl;
+package bargain_zone.service.mapper;
 
 import bargain_zone.model.dto.CommodityRequestDto;
 import bargain_zone.service.SettingDtoFieldsService;
 
-public class SettinOldPriceServiceImpl implements SettingDtoFieldsService {
+public class SettingNewPriceServiceImpl implements SettingDtoFieldsService {
     @Override
     public CommodityRequestDto apply(CommodityRequestDto dto, String text) {
-        dto.setOldPrice(text);
+        dto.setNewPrice(text);
         return dto;
     }
 }
