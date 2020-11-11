@@ -37,4 +37,4 @@ In case new category has to be added - only this class needs to be changed (add 
 ###Author
 
 Felix Yaroslavskiy
-https://github.com/fyarkiy/Zity_test
+https://github.com/fyarkiy/Zity_testing
