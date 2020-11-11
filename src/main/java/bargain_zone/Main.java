@@ -7,7 +7,7 @@ public class Main {
     public static void main(String args[]) throws Exception {
 
         BargainProcessService reader = new BargainProcessService();
-        reader.getAllBargains();
+        reader.getAllProducts();
         WriteFileService writer = new WriteFileService();
         writer.writeCsv("bargain_list.csv");
     }

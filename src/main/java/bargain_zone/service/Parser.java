@@ -9,20 +9,14 @@ import org.apache.log4j.Logger;
 public class Parser {
     private static final Logger logger = Logger.getLogger(Parser.class);
 
-    public CommodityRequestDto parseElement(Elements children, Map<String, String> mapUrl){
-        CommodityRequestDto commodityRequestDto = new CommodityRequestDto();
+    public CommodityRequestDto parseElement(Elements children, Map<String, SettingDtoFieldsService> mapUrl){
+        CommodityRequestDto dto = new CommodityRequestDto();
         for (Element el : children) {
-            if (el.attr("class").equals(mapUrl.get("commName"))) {
-                commodityRequestDto.setDescription(el.text());
-            } else if (el.attr("class").equals(mapUrl.get("oldPrice"))) {
-                commodityRequestDto.setOldPrice(el.text());
-            } else if (el.attr("class").equals(mapUrl.get("newPrice"))) {
-                commodityRequestDto.setNewPrice(el.text());
-            } else if (el.attr("class").equals(mapUrl.get("delivery"))) {
-                commodityRequestDto.setDelivery(el.text());
+            if (mapUrl.get(el.attr("class"))!= null) {
+                mapUrl.get(el.attr("class")).apply(dto, el.text());
             }
             logger.info(el.text());
         }
-        return commodityRequestDto;
+        return dto;
     }
 }

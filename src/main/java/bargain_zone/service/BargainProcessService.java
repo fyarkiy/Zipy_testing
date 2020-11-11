@@ -19,23 +19,23 @@ public class BargainProcessService {
     private ReadFileService readFileService = new ReadFileService();
     private Parser parser = new Parser();
 
-    public void getAllBargains() throws IOException {
-        for (int i = 0; i < Util.categories.size(); ) {
-            String category = Util.categories.get(i);
+    public void getAllProducts() throws IOException {
+        for (int i = 0; i < Util.CATEGORIES.size(); ) {
+            String category = Util.CATEGORIES.get(i);
             String sitePage = String.format(Util.GENERAL, category);
             i++;
             int pageNumber = 1;
-            String header = Util.categoriesMap.get(category).get("divHead");
+            String header = Util.productClassesMap.get(category);
             while (Storage.products.size() < (100 * i)) {
                 Elements productName = readFileService.readJsoupFromWebPage(sitePage + "&p=" + pageNumber, header);
-                getBargainsFromPage(productName, category, i);
+                getProductDetails(productName, category, i);
                 pageNumber++;
             }
         }
     }
 
-    private void getBargainsFromPage(Elements productName, String category, int counter) {
-        Map<String, String> mapUrl = Util.categoriesMap.get(category);
+    private void getProductDetails(Elements productName, String category, int counter) {
+        Map<String, SettingDtoFieldsService> mapUrl = Util.categoriesMap.get(category);
         for (int i = 0; i < productName.size(); i++) {
             Element element = productName.get(i);
             Elements children = element.children();
